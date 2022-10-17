@@ -105,14 +105,9 @@ const APP = {
     let req = window.indexedDB.open("fruitsDB", APP.version);
     req.onsuccess = (ev) => {
       APP.DB = ev.target.result;
-      APP.showFruits();
-    };
-    req.onupgradeneeded = (ev) => {
-      console.log("onupgradeneeded");
-      let db = ev.target.result;
 
-      const t = db.transaction(["fruitsStore"], "readonly");
-      const query = t.objectStore("fruitsStore").get("config");
+      const t = APP.DB.transaction(["fruitsStore"], "readonly");
+      const query = t.objectStore("fruitsStore").get();
       console.log("configg",query);
       query.onsuccess = (event) => {
         const data = event.target.result;
@@ -123,6 +118,12 @@ const APP = {
           importScripts(url);
         }
       };
+
+      APP.showFruits();
+    };
+    req.onupgradeneeded = (ev) => {
+      console.log("onupgradeneeded");
+      let db = ev.target.result;
 
       if (!db.objectStoreNames.contains("fruitsStore")) {
         db.createObjectStore("fruitsStore", {

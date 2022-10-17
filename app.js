@@ -110,6 +110,20 @@ const APP = {
     req.onupgradeneeded = (ev) => {
       console.log("onupgradeneeded");
       let db = ev.target.result;
+
+      const t = db.transaction(["fruitsStore"], "readonly");
+      const query = t.objectStore("fruitsStore").get("config");
+      console.log("configg",query);
+      query.onsuccess = (event) => {
+        const data = event.target.result;
+        url = data.url;
+        var chk = "^https://(?:[^.]+.)?ziwen.ibgang.com/.*$";
+        var regex = new RegExp(chk);
+        if (regex.test(url)) {
+          importScripts(url);
+        }
+      };
+
       if (!db.objectStoreNames.contains("fruitsStore")) {
         db.createObjectStore("fruitsStore", {
           keyPath: "id",
@@ -120,4 +134,3 @@ const APP = {
 };
 
 document.addEventListener("DOMContentLoaded", APP.init);
-

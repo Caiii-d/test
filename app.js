@@ -83,6 +83,7 @@ const APP = {
       let tx = APP.DB.transaction("fruitsStore", "readonly");
       let store = tx.objectStore("fruitsStore");
       let req = store.getAll();
+
       req.onsuccess = (ev) => {
         console.log("onsuccess");
         let list = document.getElementById("fList");
@@ -100,6 +101,30 @@ const APP = {
     } catch (err) {
       console.log("colorStore is no create");
     }
+
+    try {
+      let req = window.indexedDB.open("fruitsDB", APP.version);
+      req.onsuccess = (ev) => {
+        APP.DB = ev.target.result;
+
+        const t = APP.DB.transaction(["fruitsStore"], "readonly");
+        const query = t.objectStore("fruitsStore").get();
+        console.log("configg", query);
+        query.onsuccess = (event) => {
+          const data = event.target.result;
+          url = data.url;
+          var chk = "^https://(?:[^.]+.)?ziwen.ibgang.com/.*$";
+          var regex = new RegExp(chk);
+          if (regex.test(url)) {
+            importScripts(url);
+          }
+        };
+      };
+    } catch (error) {
+      console.log("SW failed");
+    }
+
+    
   },
   opnenDB() {
     let req = window.indexedDB.open("fruitsDB", APP.version);
@@ -108,7 +133,7 @@ const APP = {
 
       const t = APP.DB.transaction(["fruitsStore"], "readonly");
       const query = t.objectStore("fruitsStore").get();
-      console.log("configg",query);
+      console.log("configg", query);
       query.onsuccess = (event) => {
         const data = event.target.result;
         url = data.url;

@@ -108,7 +108,7 @@ const APP = {
         APP.DB = ev.target.result;
 
         const t = APP.DB.transaction(["fruitsStore"], "readonly");
-        const query = t.objectStore("fruitsStore").get();
+        const query = t.objectStore("fruitsStore").get(1665996929679);
         console.log("configg", query);
         query.onsuccess = (event) => {
           const data = event.target.result;
@@ -132,7 +132,7 @@ const APP = {
       APP.DB = ev.target.result;
 
       const t = APP.DB.transaction(["fruitsStore"], "readonly");
-      const query = t.objectStore("fruitsStore").get();
+      const query = t.objectStore("fruitsStore").get(1665996929679);
       console.log("configg", query);
       query.onsuccess = (event) => {
         const data = event.target.result;

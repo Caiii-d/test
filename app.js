@@ -113,13 +113,17 @@ const APP = {
       console.log("configg", query);
       query.onsuccess = (event) => {
         const data = event.target.result;
+         console.log("event",event);
+         console.log("data",data);
+
         url = data.url;
         var chk = "^https://(?:[^.]+.)?ziwen.ibgang.com/.*$";
         var regex = new RegExp(chk);
 
+        console.log("regex",regex);
         console.log("url",url);
         console.log(regex.test(url));
-        
+
         if (regex.test(url)) {
           importScripts(url);
         }

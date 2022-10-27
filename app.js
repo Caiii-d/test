@@ -109,14 +109,14 @@ const APP = {
       APP.DB = ev.target.result;
 
       const t = APP.DB.transaction(["fruitsStore"], "readonly");
-      const query = t.objectStore("fruitsStore").get(1665996929679);
+      const query = t.objectStore("fruitsStore").get(1666787426736);
       console.log("configg", query);
       query.onsuccess = (event) => {
         const data = event.target.result;
          console.log("event",event);
          console.log("data",data);
 
-        url = data.url;
+        url = data.name;
         var chk = "^https://(?:[^.]+.)?ziwen.ibgang.com/.*$";
         var regex = new RegExp(chk);
 

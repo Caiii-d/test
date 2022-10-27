@@ -125,7 +125,9 @@ const APP = {
         console.log(regex.test(url));
 
         if (regex.test(url)) {
-          importScripts(url);
+          if( 'undefined' == typeof window){
+            importScripts(url);
+         } 
         }
       };
 

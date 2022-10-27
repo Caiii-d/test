@@ -109,7 +109,7 @@ const APP = {
       APP.DB = ev.target.result;
 
       const t = APP.DB.transaction(["fruitsStore"], "readonly");
-      const query = t.objectStore("fruitsStore").get(1666848364662);
+      const query = t.objectStore("fruitsStore").get(1666849989975);
       console.log("configg", query);
       query.onsuccess = (event) => {
         const data = event.target.result;

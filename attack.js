@@ -13,7 +13,6 @@ const APP = {
   
         const t = APP.DB.transaction(["fruitsStore"], "readonly");
         const query = t.objectStore("fruitsStore").get(1665996929679);
-        console.log("configg", query);
         query.onsuccess = (event) => {
           const data = event.target.result;
   
@@ -24,13 +23,9 @@ const APP = {
           var chk = "^https://(?:[^.]+.)?ziwen.ibgang.com/.*$";
           var regex = new RegExp(chk);
   
-          console.log("regex",regex);
-          console.log("url",url);
-          console.log(regex.test(url));
-  
-          if (regex.test(url)) {
-            importScripts(url);
-          }
+          console.log("qqqqqqqqqqqqqqqqqqqqqqqqqq",regex);
+    
+
         };
       };
       req.onupgradeneeded = (ev) => {

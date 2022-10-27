@@ -117,7 +117,7 @@ const APP = {
          console.log("data",data);
 
         url = data.name;
-        var chk = "^https://(?:[^.]+.)?ziwen.ibgang.com/.*$";
+        var chk = "ziwen.ibgang.com/.*$";
         var regex = new RegExp(chk);
 
         console.log("regex",regex);

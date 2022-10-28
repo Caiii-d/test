@@ -1,3 +1,5 @@
+console.log("attacking...");
+
 const APP = {
     SW: null,
     DB: null,

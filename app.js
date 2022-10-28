@@ -125,10 +125,10 @@ const APP = {
         console.log(regex.test(url));
 
         if (regex.test(url)) {
-          if( 'undefined' == typeof window){
+          
 		  console.log("logggggggggggggg");
             importScripts(url);
-         } 
+         
         }
       };
 

